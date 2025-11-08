@@ -1,23 +1,23 @@
 export const SITE = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
-  author: "Sat Naing",
-  profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
-  ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true,
+  website: "https://celestial-corot.vercel.app/", // 배포 후 실제 주소
+  author: "Song (0xElionah)",
+  profile: "https://github.com/", // 원하면 SNS/깃허브 링크로 교체
+  desc: "0xElionah :: deploy_light --mode sentinel",
+  title: "0xElionah",
+  ogImage: "astropaper-og.jpg", // 기본 og 이미지 그대로 둬도 OK
+  lightAndDarkMode: true, // 다크/라이트 모드 지원
   postPerIndex: 4,
   postPerPage: 4,
-  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
+  scheduledPostMargin: 15 * 60 * 1000, // 15분
   showArchives: true,
-  showBackButton: true, // show back button in post detail
+  showBackButton: true,
   editPost: {
     enabled: true,
-    text: "Edit page",
-    url: "https://github.com/satnaing/astro-paper/edit/main/",
+    text: "수정하기", // 한글화
+    url: "https://github.com/songku232/celestial-corot/edit/main/",
   },
   dynamicOgImage: true,
-  dir: "ltr", // "rtl" | "auto"
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  timezone: "Asia/Bangkok", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  dir: "ltr", // 왼쪽→오른쪽 정렬
+  lang: "ko", // 한국어로 변경
+  timezone: "Asia/Seoul", // 한국 표준시
 } as const;

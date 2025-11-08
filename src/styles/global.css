@@ -1,25 +1,31 @@
 @import "tailwindcss";
 @import "./typography.css";
 
+/* ✅ 한글 웹폰트 추가 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap');
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* ✅ Light 팔레트 (보라 포인트) */
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: #faf9ff;   /* 아주 연한 보라 톤 배경 */
+  --foreground: #1f1d2b;   /* 진한 텍스트 */
+  --accent: #8b5cf6;       /* 0xElionah 포인트 보라 */
+  --muted: #e9e5ff;        /* 연보라 하이라이트 */
+  --border: #dedaf7;       /* 라이트 보더 */
 }
 
+/* ✅ Dark 팔레트 (보라 포인트) */
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
+  --background: #0b0b1a;   /* 남보라 어두운 배경 */
+  --foreground: #f4f4f5;   /* 밝은 텍스트 */
+  --accent: #a78bfa;       /* 다크에서 살짝 밝은 보라 */
+  --muted: #262247;        /* 보라빛 하이라이트 배경 */
+  --border: #2e2a4b;       /* 다크 보더 */
 }
 
+/* theme 토큰 매핑 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -28,42 +34,31 @@ html[data-theme="dark"] {
   --color-border: var(--border);
 }
 
+/* ✅ 베이스: 폰트를 Noto Sans KR로, 링크/선택색은 포인트 보라 */
 @layer base {
   * {
     @apply border-border outline-accent/75;
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
-  html {
-    @apply overflow-y-scroll scroll-smooth;
-  }
+  html { @apply overflow-y-scroll scroll-smooth; }
   body {
-    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+    /* ⬇️ 기존 font-mono → 한국어 가독성 좋은 산세리프 */
+    font-family: 'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    @apply flex min-h-svh flex-col bg-background text-foreground selection:bg-accent/75 selection:text-background;
   }
-  a,
-  button {
+  a, button {
     @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
   }
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
-  }
-  section,
-  footer {
-    @apply mx-auto max-w-app px-4;
-  }
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  section, footer { @apply mx-auto max-w-app px-4; }
 }
 
-@utility max-w-app {
-  @apply max-w-3xl;
-}
+/* 컨텐츠 폭 */
+@utility max-w-app { @apply max-w-3xl; }
 
-.active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-4;
-}
+/* 활성 네비게이션 */
+.active-nav { @apply underline decoration-wavy decoration-2 underline-offset-4; }
 
-/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 1rem;
-}
+/* 앵커 스크롤 마진 */
+:target { scroll-margin-block: 1rem; }
